@@ -13,4 +13,5 @@ int main() {
 		signo *= -1;
 	}
 	cout << setprecision (7) << pi << endl;
+	return 0;
 }
