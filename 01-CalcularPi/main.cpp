@@ -2,16 +2,25 @@
 #include <iomanip>
 using namespace std;
 
-int main() {
-	int i;
-	double pi = 0.0;
+double Liebniz (double pi) {
+	double pi_aprox = 0.0;
 	double denominador = 1.0;
 	double signo = 1.0;
-	for (i = 0; i < 1000000 ; i++) {
-		pi += signo * (4.0/denominador);
+	double condicion = 0.0000001;
+	while (true) {
+		pi_aprox += signo * (4.0/denominador);
 		denominador += 2;
 		signo *= -1;
+		if (pi_aprox >= pi - condicion && pi_aprox <= pi + condicion) {
+			break;
+		}
 	}
-	cout << setprecision (7) << pi << endl;
+	return pi_aprox;
+}
+
+int main () {
+	const double pi = 3.141592;
+	double pi_L = Liebniz (pi);
+	cout << setprecision (7) << pi_L << endl;
 	return 0;
 }
